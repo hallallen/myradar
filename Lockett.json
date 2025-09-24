@@ -1,0 +1,377 @@
+[
+    {
+        "lat": 34.121967,
+        "lon": -99.190956,
+        "name": "Lockett Turbine 1"
+    },
+    {
+        "lat": 34.107899,
+        "lon": -99.213593,
+        "name": "Lockett Turbine 2"
+    },
+    {
+        "lat": 34.082035,
+        "lon": -99.237038,
+        "name": "Lockett Turbine 3"
+    },
+    {
+        "lat": 34.113468,
+        "lon": -99.260849,
+        "name": "Lockett Turbine 4"
+    },
+    {
+        "lat": 34.058315,
+        "lon": -99.271713,
+        "name": "Lockett Turbine 5"
+    },
+    {
+        "lat": 34.082234,
+        "lon": -99.286369,
+        "name": "Lockett Turbine 6"
+    },
+    {
+        "lat": 34.120835,
+        "lon": -99.270813,
+        "name": "Lockett Turbine 7"
+    },
+    {
+        "lat": 34.098968,
+        "lon": -99.297234,
+        "name": "Lockett Turbine 8"
+    },
+    {
+        "lat": 34.093202,
+        "lon": -99.254502,
+        "name": "Lockett Turbine 9"
+    },
+    {
+        "lat": 34.109067,
+        "lon": -99.250702,
+        "name": "Lockett Turbine 10"
+    },
+    {
+        "lat": 34.108168,
+        "lon": -99.283615,
+        "name": "Lockett Turbine 11"
+    },
+    {
+        "lat": 34.137035,
+        "lon": -99.261849,
+        "name": "Lockett Turbine 12"
+    },
+    {
+        "lat": 34.120501,
+        "lon": -99.290313,
+        "name": "Lockett Turbine 13"
+    },
+    {
+        "lat": 34.137101,
+        "lon": -99.296768,
+        "name": "Lockett Turbine 14"
+    },
+    {
+        "lat": 34.093368,
+        "lon": -99.299835,
+        "name": "Lockett Turbine 15"
+    },
+    {
+        "lat": 34.102901,
+        "lon": -99.229569,
+        "name": "Lockett Turbine 16"
+    },
+    {
+        "lat": 34.118801,
+        "lon": -99.231102,
+        "name": "Lockett Turbine 17"
+    },
+    {
+        "lat": 34.134602,
+        "lon": -99.232835,
+        "name": "Lockett Turbine 18"
+    },
+    {
+        "lat": 34.137268,
+        "lon": -99.280313,
+        "name": "Lockett Turbine 19"
+    },
+    {
+        "lat": 34.112301,
+        "lon": -99.309502,
+        "name": "Lockett Turbine 20"
+    },
+    {
+        "lat": 34.126968,
+        "lon": -99.315268,
+        "name": "Lockett Turbine 21"
+    },
+    {
+        "lat": 34.093735,
+        "lon": -99.318568,
+        "name": "Lockett Turbine 22"
+    },
+    {
+        "lat": 34.108735,
+        "lon": -99.319435,
+        "name": "Lockett Turbine 23"
+    },
+    {
+        "lat": 34.123935,
+        "lon": -99.334568,
+        "name": "Lockett Turbine 24"
+    },
+    {
+        "lat": 34.118101,
+        "lon": -99.203035,
+        "name": "Lockett Turbine 25"
+    },
+    {
+        "lat": 34.134135,
+        "lon": -99.204635,
+        "name": "Lockett Turbine 26"
+    },
+    {
+        "lat": 34.150202,
+        "lon": -99.206235,
+        "name": "Lockett Turbine 27"
+    },
+    {
+        "lat": 34.150068,
+        "lon": -99.225168,
+        "name": "Lockett Turbine 28"
+    },
+    {
+        "lat": 34.149968,
+        "lon": -99.243868,
+        "name": "Lockett Turbine 29"
+    },
+    {
+        "lat": 34.149868,
+        "lon": -99.262868,
+        "name": "Lockett Turbine 30"
+    },
+    {
+        "lat": 34.149768,
+        "lon": -99.281768,
+        "name": "Lockett Turbine 31"
+    },
+    {
+        "lat": 34.149668,
+        "lon": -99.300735,
+        "name": "Lockett Turbine 32"
+    },
+    {
+        "lat": 34.149568,
+        "lon": -99.319635,
+        "name": "Lockett Turbine 33"
+    },
+    {
+        "lat": 34.149468,
+        "lon": -99.338535,
+        "name": "Lockett Turbine 34"
+    },
+    {
+        "lat": 34.109368,
+        "lon": -99.338135,
+        "name": "Lockett Turbine 35"
+    },
+    {
+        "lat": 34.138902,
+        "lon": -99.353435,
+        "name": "Lockett Turbine 36"
+    },
+    {
+        "lat": 34.124302,
+        "lon": -99.354102,
+        "name": "Lockett Turbine 37"
+    },
+    {
+        "lat": 34.109702,
+        "lon": -99.354769,
+        "name": "Lockett Turbine 38"
+    },
+    {
+        "lat": 34.095102,
+        "lon": -99.355435,
+        "name": "Lockett Turbine 39"
+    },
+    {
+        "lat": 34.080502,
+        "lon": -99.356102,
+        "name": "Lockett Turbine 40"
+    },
+    {
+        "lat": 34.087635,
+        "lon": -99.283302,
+        "name": "Lockett Turbine 41"
+    },
+    {
+        "lat": 34.072935,
+        "lon": -99.273502,
+        "name": "Lockett Turbine 42"
+    },
+    {
+        "lat": 34.058235,
+        "lon": -99.263702,
+        "name": "Lockett Turbine 43"
+    },
+    {
+        "lat": 34.043535,
+        "lon": -99.253902,
+        "name": "Lockett Turbine 44"
+    },
+    {
+        "lat": 34.087302,
+        "lon": -99.225535,
+        "name": "Lockett Turbine 45"
+    },
+    {
+        "lat": 34.072602,
+        "lon": -99.215735,
+        "name": "Lockett Turbine 46"
+    },
+    {
+        "lat": 34.057902,
+        "lon": -99.205935,
+        "name": "Lockett Turbine 47"
+    },
+    {
+        "lat": 34.043202,
+        "lon": -99.196135,
+        "name": "Lockett Turbine 48"
+    },
+    {
+        "lat": 34.086968,
+        "lon": -99.167769,
+        "name": "Lockett Turbine 49"
+    },
+    {
+        "lat": 34.072268,
+        "lon": -99.157969,
+        "name": "Lockett Turbine 50"
+    },
+    {
+        "lat": 34.057568,
+        "lon": -99.148169,
+        "name": "Lockett Turbine 51"
+    },
+    {
+        "lat": 34.042868,
+        "lon": -99.138369,
+        "name": "Lockett Turbine 52"
+    },
+    {
+        "lat": 34.086635,
+        "lon": -99.110002,
+        "name": "Lockett Turbine 53"
+    },
+    {
+        "lat": 34.071935,
+        "lon": -99.100202,
+        "name": "Lockett Turbine 54"
+    },
+    {
+        "lat": 34.057235,
+        "lon": -99.090402,
+        "name": "Lockett Turbine 55"
+    },
+    {
+        "lat": 34.042535,
+        "lon": -99.080602,
+        "name": "Lockett Turbine 56"
+    },
+    {
+        "lat": 34.086302,
+        "lon": -99.052235,
+        "name": "Lockett Turbine 57"
+    },
+    {
+        "lat": 34.071602,
+        "lon": -99.042435,
+        "name": "Lockett Turbine 58"
+    },
+    {
+        "lat": 34.056902,
+        "lon": -99.032635,
+        "name": "Lockett Turbine 59"
+    },
+    {
+        "lat": 34.042202,
+        "lon": -99.022835,
+        "name": "Lockett Turbine 60"
+    },
+    {
+        "lat": 34.085968,
+        "lon": -98.994469,
+        "name": "Lockett Turbine 61"
+    },
+    {
+        "lat": 34.071268,
+        "lon": -98.984669,
+        "name": "Lockett Turbine 62"
+    },
+    {
+        "lat": 34.056568,
+        "lon": -98.974869,
+        "name": "Lockett Turbine 63"
+    },
+    {
+        "lat": 34.041868,
+        "lon": -98.965069,
+        "name": "Lockett Turbine 64"
+    },
+    {
+        "lat": 34.085635,
+        "lon": -98.936702,
+        "name": "Lockett Turbine 65"
+    },
+    {
+        "lat": 34.070935,
+        "lon": -98.926902,
+        "name": "Lockett Turbine 66"
+    },
+    {
+        "lat": 34.056235,
+        "lon": -98.917102,
+        "name": "Lockett Turbine 67"
+    },
+    {
+        "lat": 34.041535,
+        "lon": -98.907302,
+        "name": "Lockett Turbine 68"
+    },
+    {
+        "lat": 34.085302,
+        "lon": -98.878935,
+        "name": "Lockett Turbine 69"
+    },
+    {
+        "lat": 34.070602,
+        "lon": -98.869135,
+        "name": "Lockett Turbine 70"
+    },
+    {
+        "lat": 34.055902,
+        "lon": -98.859335,
+        "name": "Lockett Turbine 71"
+    },
+    {
+        "lat": 34.041202,
+        "lon": -98.849535,
+        "name": "Lockett Turbine 72"
+    },
+    {
+        "lat": 34.115166,
+        "lon": -99.251801,
+        "name": "Lockett Turbine 73"
+    },
+    {
+        "lat": 34.097507,
+        "lon": -99.204033,
+        "name": "Lockett Turbine 74"
+    },
+    {
+        "lat": 34.082535,
+        "lon": -99.224236,
+        "name": "Lockett Turbine 75"
+    }
+]
