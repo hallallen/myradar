@@ -1,0 +1,186 @@
+<title>Collgar Lightning Data Accuracy</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (~70ch) with full-width figure plates; findings first, method last. */
+:root {
+  --bg: #f7f8f9; --surface: #ffffff; --fg: #15191d; --fg2: #4a525b; --muted: #6b737c;
+  --rule: #d9dde2; --accent: #1f5fae; --accent-soft: #e6eef8; --warn: #a2470f; --warn-soft: #fbeee4; --ok: #1d7a4f;
+  --plate: #ffffff;
+  --display: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121519; --surface: #1a1e23; --fg: #e8ebee; --fg2: #b8bfc7; --muted: #8e969f;
+  --rule: #2f353c; --accent: #7fb0ec; --accent-soft: #1d2a3a; --warn: #f0a26e; --warn-soft: #33241a; --ok: #6fcf9f;
+  --plate: #ffffff; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #121519; --surface: #1a1e23; --fg: #e8ebee; --fg2: #b8bfc7; --muted: #8e969f;
+  --rule: #2f353c; --accent: #7fb0ec; --accent-soft: #1d2a3a; --warn: #f0a26e; --warn-soft: #33241a; --ok: #6fcf9f;
+  --plate: #ffffff; color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: 40px 72px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.col { max-width: 70ch; }
+header { display: grid; gap: 10px; border-bottom: 1px solid var(--rule); padding-bottom: 24px; margin-bottom: 32px; }
+.eyebrow { font: 500 12px/1.4 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font: 600 clamp(28px, 4.2vw, 40px)/1.15 var(--display); margin: 0; text-wrap: balance; }
+h2 { font: 600 24px/1.25 var(--display); margin: 48px 0 12px; text-wrap: balance; }
+h3 { font: 600 17px/1.35 var(--body); margin: 28px 0 8px; }
+p { margin: 0 0 14px; }
+.lede { font-size: 18px; color: var(--fg2); }
+.verdict { background: var(--warn-soft); border-left: 3px solid var(--warn); padding: 16px 20px; margin: 8px 0 24px; }
+.verdict strong { color: var(--warn); }
+.facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 12px; margin: 20px 0 8px; }
+.fact { background: var(--surface); border: 1px solid var(--rule); padding: 14px 16px; display: grid; gap: 4px; align-content: start; }
+.fact .n { font: 600 26px/1.1 var(--mono); font-variant-numeric: tabular-nums; }
+.fact .l { font-size: 13.5px; color: var(--fg2); line-height: 1.45; }
+figure { margin: 22px 0 28px; }
+figure .plate { background: var(--plate); border: 1px solid var(--rule); padding: 10px; }
+figure img { display: block; width: 100%; height: auto; }
+figcaption { font-size: 13.5px; color: var(--fg2); margin-top: 8px; max-width: 90ch; }
+.tbl { overflow-x: auto; margin: 14px 0 22px; }
+table { border-collapse: collapse; font-size: 14px; min-width: 560px; width: 100%; background: var(--surface); }
+th, td { padding: 7px 10px; border-bottom: 1px solid var(--rule); text-align: left; vertical-align: top; }
+th { font: 500 12px/1.3 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); background: var(--bg); }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 13.5px; }
+tr.hl td { background: var(--accent-soft); }
+code { font-family: var(--mono); font-size: .9em; }
+ul, ol { padding-left: 1.25em; margin: 0 0 14px; }
+li { margin-bottom: 6px; }
+.flag { color: var(--warn); font-weight: 600; }
+.small { font-size: 13.5px; color: var(--fg2); }
+footer { margin-top: 56px; border-top: 1px solid var(--rule); padding-top: 18px; font-size: 13px; color: var(--muted); }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Collgar Wind Farm, WA · lightning data review · prepared 9 Nov 2026</div>
+  <h1>Is Collgar's lightning data good enough to tell which turbine was struck?</h1>
+  <p class="lede col">A statistical comparison of the AccuWeather and Vaisala (xWeather) stroke data at Collgar, and a test of whether negative cloud-to-ground strokes visibly attach to turbines, benchmarked against Rush Springs, a comparable US wind farm.</p>
+</header>
+
+<section class="col">
+  <div class="verdict"><strong>Short answer: no.</strong> At Rush Springs (Oklahoma) the same analysis finds 19 times more −CG strokes within 50 m of a turbine than chance, because strokes there are located to about 30 m. At Collgar the stroke pattern is indistinguishable from a farm with no turbines. That is what we would expect if Collgar's location error is 0.5–1.4 km. Showing turbine attachment needs an error below about 100–150 m, and pinning a strike to one turbine needs below about 100 m. The AccuWeather feed does not help: for {{same_frac}} of its records it is the same Vaisala solution, re-delivered with a 12-hour clock error and rounded values.</div>
+</section>
+
+<div class="facts">
+  <div class="fact"><span class="n">{{same_frac}}</span><span class="l">of AccuWeather records are an exact copy of a Vaisala stroke (same second, &lt;15 m). Every copy is CG.</span></div>
+  <div class="fact"><span class="n">+12 h</span><span class="l">AccuWeather's “Date &amp; Time GMT” is 12 hours behind UTC ({{off12}} of 6,525 records match at +12 h; the next best offset matches {{off2}}).</span></div>
+  <div class="fact"><span class="n">19× vs 1.05×</span><span class="l">−CG density within 50 m of a turbine compared with chance: Rush Springs vs Collgar.</span></div>
+  <div class="fact"><span class="n">≈100 m</span><span class="l">1-σ location error needed at Collgar to detect turbine attachment and attribute strikes reliably. Current estimate: 460–1,445 m.</span></div>
+</div>
+
+<section class="col">
+<h2>1. AccuWeather vs Vaisala at Collgar</h2>
+<p><strong>Data.</strong> AccuWeather: <code>collgar_accuweather_20251103_20260809.csv</code>, 6,525 records within 50 km (time, lat/lon, kA, count). Vaisala: the xWeather realtime day-files in the WGLT archive for the same period (17 storm days, CG and IC, with error ellipses, sensor counts and χ²). Comparison domain: within 50 km of the farm centre, on the 17 days both sources hold. That gives 6,109 AccuWeather records against 26,722 Vaisala strokes (7,548 CG, 19,174 IC). AccuWeather also has 96 records on 13 days for which the archive holds no Vaisala file. Those are excluded.</p>
+<p><strong>Matching.</strong> AccuWeather times are truncated to whole seconds. After the +12 h correction, matched pairs fall at Δt = −1 to 0 s ({{trunc_frac}} of pairs). Each AccuWeather record was paired one-to-one with the nearest Vaisala stroke in that one-second window, exact positional twins first, up to 10 km away.</p>
+</section>
+
+<div class="tbl"><table>
+<thead><tr><th>Metric</th><th class="num">Value</th><th>What it means</th></tr></thead>
+<tbody>
+<tr><td>AccuWeather records matched to a Vaisala stroke</td><td class="num">{{match_frac}}</td><td>Almost everything AccuWeather reports, Vaisala also has.</td></tr>
+<tr class="hl"><td>Same solution (same second, &lt;15 m)</td><td class="num">{{same_n}} ({{same_frac}})</td><td>Identical location. Residuals ≤10 m come from the Vaisala file's 4-decimal coordinates.</td></tr>
+<tr><td>Peak current in same-solution pairs</td><td class="num">100%</td><td>AccuWeather kA = Vaisala kA truncated toward zero to an integer. Polarity agrees 100%.</td></tr>
+<tr><td>Vaisala CG strokes present in AccuWeather</td><td class="num">{{cg_in}}</td><td>AccuWeather is a <em>subset</em>: about a third of Vaisala CG strokes are missing.</td></tr>
+<tr><td>Vaisala IC pulses present in AccuWeather</td><td class="num">{{ic_in}}</td><td>AccuWeather carries effectively no in-cloud data and has no CG/IC flag.</td></tr>
+<tr><td>CG detection by |Ip|: 5–10 / 10–20 / 20–40 / 40–80 / ≥80 kA</td><td class="num">{{det_ka}}</td><td>Weak strokes are dropped slightly more often.</td></tr>
+<tr><td>All matched CG: peak-current Pearson r · median |ΔkA|</td><td class="num">{{cg_r}} · {{cg_dka}} kA</td><td>Includes the different-solution days below.</td></tr>
+<tr><td>Error ellipse, location error estimate, sensor count, χ²</td><td class="num">none</td><td>AccuWeather supplies no quality fields, so its own accuracy cannot be judged from the file.</td></tr>
+</tbody></table></div>
+
+<figure><div class="plate"><img src="{{A1}}" alt="Left: scatter of AccuWeather vs Vaisala peak current, same-solution pairs on the 1:1 line. Right: bar chart of share of Vaisala CG strokes found in AccuWeather by day, near 100% on most days and zero on 4-5 Nov 2025 and 10 Aug 2026."></div>
+<figcaption>Figure 1. Left: peak current for every matched pair. Same-solution pairs (blue) sit on the 1:1 line apart from integer truncation. Right: share of each day's Vaisala CG strokes that appear in AccuWeather as the same solution. On 4–5 Nov 2025 and 10 Aug 2026 AccuWeather carries a <em>different</em> location solution for the same strokes.</figcaption></figure>
+
+<section class="col">
+<h3>The three days where the feeds disagree</h3>
+<p>On 4–5 Nov 2025 and 10 Aug 2026 the clock still lines up at +12 h, but none of AccuWeather's 1,190 records is a positional copy of a Vaisala stroke. AccuWeather was evidently fed a different location solution of the same strokes on those days. They are the only independent location check available at Collgar.</p>
+<ul>
+<li>Separation from the nearest Vaisala CG in the same second (within 5 km): median <strong>{{iv_med}} m</strong>, interquartile {{iv_q1}}–{{iv_q3}} m. Only {{iv_500}} are within 500 m and {{iv_1k}} within 1 km.</li>
+<li>Peak current agrees poorly (r = {{iv_r}}, median |ΔkA| {{iv_dka}} kA). Polarity agrees {{iv_pol}} of the time.</li>
+<li>If the two solutions were independent, a median separation of {{iv_med}} m implies a combined 1-σ error of about {{iv_sig}} m. Two things cloud that figure. Pairing errors in busy seconds push it up. Errors shared because both solutions use the same sensors push it down. Read it as a rough lower bracket on Collgar's real error. Vaisala's own 50% ellipse for these strokes has a median semi-major of {{iv_sm}} m, which corresponds to σ ≈ 1.2–1.4 km.</li>
+</ul>
+</section>
+
+<figure><div class="plate" style="max-width:720px"><img src="{{A2}}" alt="Histogram of AccuWeather-Vaisala separation on independent-solution days, median 545 m, long tail beyond 2 km."></div>
+<figcaption>Figure 2. Separation between AccuWeather and Vaisala positions for strokes in the same second, 4–5 Nov 2025 and 10 Aug 2026. The bar at 5 km collects every separation above 5 km. Those are mostly pairing errors in busy seconds.</figcaption></figure>
+
+<section class="col">
+<h3>What this means for the two sources</h3>
+<ul>
+<li><strong>Location.</strong> AccuWeather adds no independent location information. Most of the time it is the Vaisala realtime position. On the days it differs, its positions are no closer to the turbines and carry no error estimate.</li>
+<li><strong>Stroke parameters.</strong> Peak current is Vaisala's value, truncated to whole kA. There is no rise time, multiplicity, charge, specific energy or continuing-current estimate. Vaisala carries all of these, though rise time is missing for about 55% of Collgar strokes.</li>
+<li><strong>Completeness.</strong> AccuWeather holds about two-thirds of Vaisala's CG strokes and almost none of its IC pulses. Counts built from it understate the stroke rate.</li>
+<li><strong>Timing.</strong> Any use of the AccuWeather file must add 12 hours to “Date &amp; Time GMT”. Its one-second resolution cannot separate the strokes of a multi-stroke flash.</li>
+<li><span class="flag">Note for the draft report:</span> <em>Collgar Blade Lightning Damage and Site Lightning Assessment, DRAFT Rev A</em> calls this file the “Weatherzone feed” (6,525 records, 3 Nov 2025 – 9 Aug 2026). It is the AccuWeather file. The draft's 12-hour finding is confirmed here. Its 73% containment figure used a 25 km radius and the realtime day list; this analysis uses 50 km and separates same-solution matches from different-solution ones.</li>
+</ul>
+
+<h2>2. Do −CG strokes attach visibly to turbines? Collgar vs Rush Springs</h2>
+<p><strong>Why Rush Springs.</strong> It is the closest high-data US analogue in the WGLT fleet: 119 turbines of a 2 MW class (GE 2.0-116, 138 m tip, against Collgar's V90-2.0 at 125 m), ~400 m turbine spacing, and 73 m of ground relief against Collgar's 50 m. It sits inside the dense US NLDN network, and its location error has been <em>measured</em> from turbine strikes at σ = 28 m.</p>
+</section>
+
+<div class="tbl"><table>
+<thead><tr><th></th><th class="num">Collgar (WA)</th><th class="num">Rush Springs (OK)</th></tr></thead>
+<tbody>
+<tr><td>Turbines in analysis · model · tip height</td><td class="num">127 · Vestas V90-2.0 · 125 m</td><td class="num">119 · GE 2.0-116 · 138 m</td></tr>
+<tr><td>Median spacing to nearest turbine</td><td class="num">{{c_sp}} m</td><td class="num">{{r_sp}} m</td></tr>
+<tr><td>Record · Vaisala solution</td><td class="num">{{c_yrs}} yr · 100% realtime</td><td class="num">{{r_yrs}} yr · {{r_rep}} reprocessed</td></tr>
+<tr><td>−CG strokes within 5 km of a turbine</td><td class="num">{{c_n}}</td><td class="num">{{r_n}}</td></tr>
+<tr><td>−CG stroke density (per km² per year)</td><td class="num">{{c_dens}}</td><td class="num">{{r_dens}}</td></tr>
+<tr><td>Median reporting sensors · χ²</td><td class="num">{{c_ns}} · {{c_chi}}</td><td class="num">{{r_ns}} · {{r_chi}}</td></tr>
+<tr><td>Vaisala 50% ellipse semi-major (median)</td><td class="num">{{c_ell}} m</td><td class="num">200 m (flat default)</td></tr>
+<tr class="hl"><td>1-σ location error used by WGLT</td><td class="num">1,445 m (from ellipses; not measurable)</td><td class="num">28 m (measured on turbine strikes)</td></tr>
+<tr><td>Strokes within 50 m: observed / expected by chance</td><td class="num">{{c_50}}</td><td class="num">{{r_50}}</td></tr>
+<tr><td>Strokes within 100 m: observed / expected</td><td class="num">{{c_100}}</td><td class="num">{{r_100}}</td></tr>
+<tr><td>Strokes within 200 m: observed / expected</td><td class="num">{{c_200}}</td><td class="num">{{r_200}}</td></tr>
+<tr><td>Mixture fit: attached share of −CG (95% CI) · fitted σ</td><td class="num">{{c_w}} · n.s.</td><td class="num">{{r_w}} · {{r_sig}} m</td></tr>
+<tr class="hl"><td>Shift test p-value (local contrast · mixture LRT)</td><td class="num">{{c_p}}</td><td class="num">{{r_p}}</td></tr>
+</tbody></table></div>
+
+<figure><div class="plate"><img src="{{B1}}" alt="Two line charts of observed-to-expected stroke density versus distance to nearest turbine. Rush Springs peaks at 19 within 50 m and dips below 1 out to 400 m; Collgar stays within the grey no-turbine band throughout."></div>
+<figcaption>Figure 3. Observed ÷ expected −CG stroke density against distance to the nearest turbine (50 m bins, log scale). Grey band: 5–95% range when the turbine layout is rotated and shifted 3–8 km over the same strokes, i.e. what a farm with no turbine effect looks like at that site. Rush Springs shows the attachment signature: a 19× spike at the turbines and a deficit out to ~400 m, where strokes were drawn onto the turbines. Collgar never leaves the band.</figcaption></figure>
+
+<figure><div class="plate"><img src="{{B3}}" alt="Three scatter maps of strokes around turbines: Rush Springs as measured with tight clusters on turbines; Rush Springs with 1,445 m added error showing no clusters; Collgar as measured with no clusters."></div>
+<figcaption>Figure 4. −CG positions in a 6 × 6 km window. Clusters on the turbines at Rush Springs (left) disappear when Collgar's 1,445 m error is added to the same strokes (centre). Collgar (right) looks like the centre panel.</figcaption></figure>
+
+<section class="col">
+<h3>Is the data accurate enough? Three tests</h3>
+<ol>
+<li><strong>Collgar should have shown a signal if the data were good.</strong> Scaling Rush Springs' attachment rate (per unit background stroke density, by tip height²) gives Collgar an equivalent capture radius of about {{rc}} m. That means roughly <strong>{{natt}} −CG strokes</strong> captured by turbines over the record, {{natt_pct}} of strokes within 5 km. The ridge would push this higher.</li>
+<li><strong>Simulated attachment at Collgar.</strong> Strokes in the real Collgar data that fall within the capture radius were moved onto the turbine, every stroke was blurred by a chosen location error, and the result was tested against the shifted-layout null. The signal is found every time at σ ≤ 100 m, 57% of the time at 250 m, 26% at 500 m, and 8% at 1,445 m. The last figure is the false-alarm rate, meaning no detection at all.</li>
+<li><strong>Rush Springs degraded to Collgar quality.</strong> Rush Springs strokes were given extra location error and subsampled to Collgar's stroke count. Its unmistakable signal survives 250 m of added error (93% detected), drops to 33% at 500 m and 12% at 1 km, and vanishes at 1,445 m (3%).</li>
+</ol>
+<p>So the null result at Collgar does not mean turbines there are not struck. It means a 0.5–1.4 km error erases the evidence. Pinning an individual strike to a turbine is harder still. With Collgar's layout, the nearest turbine to a reported stroke is the struck one {{att100}} of the time at σ = 100 m, {{att300}} at 300 m, {{att500}} at 500 m, and {{att1445}} at 1,445 m.</p>
+</section>
+
+<figure><div class="plate"><img src="{{B2}}" alt="Left: detection probability versus location error, near 1 below 100 m and falling to the false-alarm rate by 1,445 m. Right: probability nearest turbine is the struck turbine, 97% at 100 m, 36% at 500 m, 11% at 1,445 m."></div>
+<figcaption>Figure 5. Left: chance of detecting the expected turbine-attachment signal against 1-σ location error. Blue: capture-and-relocate simulation on Collgar's real strokes. Orange: Rush Springs degraded and subsampled to Collgar's count. Right: chance that the nearest turbine to a reported stroke is the struck one, for Collgar's layout. Dotted lines: Rush Springs measured error, and Collgar's lower and upper error estimates.</figcaption></figure>
+
+<section class="col">
+<h2>Conclusions and recommendations</h2>
+<ol>
+<li><strong>Neither source can attribute strikes to Collgar turbines.</strong> Vaisala realtime data at Collgar has an estimated 1-σ error between ~460 m (independent re-location, lower bracket) and ~1,445 m (Vaisala's ellipses). Detecting attachment needs about 100–150 m, and per-turbine attribution about 100 m: a gap of 4–15×.</li>
+<li><strong>AccuWeather is not an independent second opinion.</strong> It is a truncated, CG-only subset of the same Vaisala realtime solution ({{same_frac}} exact copies), with a 12-hour timestamp error. It should not be used to corroborate Vaisala locations, and its peak currents carry no extra information.</li>
+<li><strong>Use Vaisala, with its ellipses, for site-level statistics.</strong> That covers flash density, seasonality, polarity, peak-current distribution and storm windows. Treat every turbine inside a stroke's 95% ellipse as a candidate, as the draft report already does.</li>
+<li><strong>For attribution, measure at the turbine.</strong> Turbine-mounted strike detection (current sensors, strike counters or acoustic blade sensors) is the only way to tie damage to a strike at Collgar. Check with Vaisala whether a reprocessed or regional-sensor solution with better geometry exists for south-west WA. At Rush Springs, reprocessing is part of what delivers 28 m.</li>
+</ol>
+
+<h3>Caveats</h3>
+<ul class="small">
+<li>Rush Springs data are 99.96% reprocessed and Collgar's are 100% realtime. Part of the accuracy gap is the solution type, not just network geometry. That only strengthens the conclusion for Collgar's realtime data.</li>
+<li>The attachment-rate transfer assumes US downward-lightning physics at Collgar. A 2× higher or lower rate shifts the detectable σ only modestly: power at σ ≥ 1 km stays near the false-alarm rate.</li>
+<li>The WGLT turbine table has 127 Collgar positions. The draft report counts 111 operating turbines. Using 111 would slightly reduce the expected signal and change nothing else.</li>
+<li>The archive holds Vaisala files only for storm days the pipeline pulled. 96 AccuWeather records on 13 other days could not be checked.</li>
+<li>Rush Springs and Collgar strokes are from each farm's WGLT database (CG strokes ≤ ~25–30 km). The location analysis uses negative CG only.</li>
+</ul>
+</section>
+
+<footer>
+Sources: WGLT lightning archive (Vaisala via xWeather; <code>vaisala/Collgar/</code>, <code>wglt_db/farms/Collgar.db</code>, <code>wglt_db/farms/rush_springs.db</code>, <code>reference/location_error_model.json</code>) and <code>accuweather/Collgar/collgar_accuweather_20251103_20260809.csv</code>. Code and full numeric outputs: <code>hallallen/myradar</code>, branch <code>claude/collgar-lightning-analysis-flm5z5</code>, folder <code>collgar_lightning/</code>.
+</footer>
+</div>

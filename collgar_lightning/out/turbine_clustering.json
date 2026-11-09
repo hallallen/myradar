@@ -1,0 +1,409 @@
+{
+ "Collgar": {
+  "n_turbines": 127,
+  "tip_height_m": 125.0,
+  "turbine_spacing_nn_m": {
+   "median": 432.8150223289733,
+   "p10": 323.3263541043146
+  },
+  "ground_relief_m": 50.0,
+  "years_of_data": 6.668281243513943,
+  "first": "2020-02-05 02:30:51.926688779",
+  "last": "2026-10-06 16:40:04.097004369",
+  "cg_strokes_db": 23723,
+  "neg_cg_strokes": 20655,
+  "neg_cg_in_domain": 2864,
+  "domain_area_km2": 432.0955515331683,
+  "neg_cg_density_per_km2_yr": 0.9939838082938118,
+  "reprocessed_frac": 0.0,
+  "wglt_loc_tier": "out-of-domain",
+  "wglt_loc_sigma_m": 1445.0,
+  "wglt_loc_r95_m": 3537.0,
+  "ellipse_semi_major_m": {
+   "median": 1701.0,
+   "p10": 1100.0,
+   "p90": 2860.0
+  },
+  "ellipse_semi_minor_m_median": 1060.0,
+  "num_sensors_median": 8.0,
+  "chi_square_median": 1.07,
+  "excess_within": {
+   "50": {
+    "observed": 7.0,
+    "expected_uniform": 6.641368311371643,
+    "ratio": 1.0539996687149984,
+    "poisson_p_upper": 0.49560853344264844
+   },
+   "100": {
+    "observed": 31.0,
+    "expected_uniform": 26.448744320557985,
+    "ratio": 1.172078327208314,
+    "poisson_p_upper": 0.2116892770804583
+   },
+   "200": {
+    "observed": 124.0,
+    "expected_uniform": 104.00242700898079,
+    "ratio": 1.1922798685197258,
+    "poisson_p_upper": 0.030585775090683866
+   },
+   "500": {
+    "observed": 408.0,
+    "expected_uniform": 391.01246252099884,
+    "ratio": 1.0434450026719773,
+    "poisson_p_upper": 0.20146184397282782
+   },
+   "1000": {
+    "observed": 755.0,
+    "expected_uniform": 759.6677832987192,
+    "ratio": 0.9938554939391399,
+    "poisson_p_upper": 0.5720730961014199
+   },
+   "2000": {
+    "observed": 1275.0,
+    "expected_uniform": 1329.7139957045342,
+    "ratio": 0.9588528090391764,
+    "poisson_p_upper": 0.9357715445277984
+   }
+  },
+  "ks_vs_uniform_r_le_2km": {
+   "D": 0.029801003404597293,
+   "p": 0.20342017533476353
+  },
+  "mixture_fit": {
+   "w": 0.006254643077693077,
+   "w_ci95": [
+    0.0,
+    0.01563660769423269
+   ],
+   "sigma_m": 120.0,
+   "lrt": 2.0082995815755567,
+   "p_value": 0.2613982789855384,
+   "ll0": -15112.193691357674,
+   "ll1": -15111.189541566886
+  },
+  "attached_strokes_est": 17.913297774512973,
+  "nearest_turbine_correct_frac_at_fit_sigma": 0.9359766666666667
+ },
+ "Rush Springs": {
+  "n_turbines": 119,
+  "tip_height_m": 138.1,
+  "turbine_spacing_nn_m": {
+   "median": 394.1247695249556,
+   "p10": 351.4914192560182
+  },
+  "ground_relief_m": 72.69999999999999,
+  "years_of_data": 4.708572752852368,
+  "first": "2022-02-17 07:38:18.815364864",
+  "last": "2026-11-03 02:59:14.320778752",
+  "cg_strokes_db": 148798,
+  "neg_cg_strokes": 131555,
+  "neg_cg_in_domain": 28248,
+  "domain_area_km2": 571.6964737520992,
+  "neg_cg_density_per_km2_yr": 10.493802975550567,
+  "reprocessed_frac": 0.9996169303350851,
+  "wglt_loc_tier": "measured",
+  "wglt_loc_sigma_m": 28.3,
+  "wglt_loc_r95_m": 69.3,
+  "ellipse_semi_major_m": {
+   "median": 200.0,
+   "p10": 200.0,
+   "p90": 200.0
+  },
+  "ellipse_semi_minor_m_median": 200.0,
+  "num_sensors_median": 17.0,
+  "chi_square_median": 0.4,
+  "excess_within": {
+   "50": {
+    "observed": 906.0,
+    "expected_uniform": 46.71930962623743,
+    "ratio": 19.392409846124803,
+    "poisson_p_upper": 0.0
+   },
+   "100": {
+    "observed": 1527.0,
+    "expected_uniform": 184.66585784930783,
+    "ratio": 8.268989285751305,
+    "poisson_p_upper": 0.0
+   },
+   "200": {
+    "observed": 1824.0,
+    "expected_uniform": 730.8457335864409,
+    "ratio": 2.4957387259403987,
+    "poisson_p_upper": 2.832245334411415e-252
+   },
+   "500": {
+    "observed": 3641.0,
+    "expected_uniform": 3159.5023251967677,
+    "ratio": 1.1523966831621957,
+    "poisson_p_upper": 3.2516256630462954e-17
+   },
+   "1000": {
+    "observed": 7495.0,
+    "expected_uniform": 7317.977692959357,
+    "ratio": 1.0241900583013468,
+    "poisson_p_upper": 0.019832293821069484
+   },
+   "2000": {
+    "observed": 13529.0,
+    "expected_uniform": 13672.914683489871,
+    "ratio": 0.9894744692831552,
+    "poisson_p_upper": 0.891732653835996
+   }
+  },
+  "ks_vs_uniform_r_le_2km": {
+   "D": 0.09995665054881792,
+   "p": 4.002326736467965e-118
+  },
+  "mixture_fit": {
+   "w": 0.04882110388408642,
+   "w_ci95": [
+    0.046135943170461664,
+    0.05126215907829074
+   ],
+   "sigma_m": 35.0,
+   "lrt": 4847.085099578486,
+   "p_value": 0.0,
+   "ll0": -151062.1171117855,
+   "ll1": -148638.57456199627
+  },
+  "attached_strokes_est": 1379.0985425176732,
+  "nearest_turbine_correct_frac_at_fit_sigma": 1.0
+ },
+ "transfer": {
+  "rush_springs_equiv_collection_area_km2_per_turbine": 0.24658345933308112,
+  "rush_springs_equiv_radius_m": 280.160584085482,
+  "collgar_equiv_collection_area_km2_per_turbine": 0.20202104342944266,
+  "collgar_expected_attached_negCG_strokes": 170.05662248495477,
+  "collgar_expected_attached_frac_of_domain": 0.05937731232016577,
+  "note": "Rush Springs attachment rate per unit background -CG density, scaled by (tip height)^2; assumes similar attachment physics. Collgar sits on a 40-80 m ridge, which would raise it.",
+  "collgar_capture_radius_m": 253.58488783986428
+ },
+ "shift_test": {
+  "Collgar": {
+   "observed": {
+    "local_ratio": 1.154771821682653,
+    "o_local": 173.0,
+    "e_local": 149.81314641702676,
+    "lrt": 2.0082995815755567,
+    "w": 0.006254643077693077,
+    "n": 2864
+   },
+   "cover_radius_m": 29974.0386602538,
+   "k": 200,
+   "null_local_ratio_p50_p95_p99": [
+    0.9896743095180642,
+    1.161127767742002,
+    1.2470566418955393
+   ],
+   "null_lrt_p50_p95_p99": [
+    0.8965544974234945,
+    6.9167181722081255,
+    9.746727238155025
+   ],
+   "p_local": 0.07462686567164178,
+   "p_lrt": 0.2935323383084577
+  },
+  "Rush Springs": {
+   "observed": {
+    "local_ratio": 2.11501547942516,
+    "o_local": 2023.0,
+    "e_local": 956.4941815696928,
+    "lrt": 4847.085099578486,
+    "w": 0.04882110388408642,
+    "n": 28248
+   },
+   "cover_radius_m": 29969.02260378616,
+   "k": 100,
+   "null_local_ratio_p50_p95_p99": [
+    1.0075991366687869,
+    1.1278670206514871,
+    1.1524164520056275
+   ],
+   "null_lrt_p50_p95_p99": [
+    9.329009987966856,
+    76.76211674550139,
+    139.48780820705647
+   ],
+   "p_local": 0.009900990099009901,
+   "p_lrt": 0.009900990099009901
+  }
+ },
+ "collgar_power": {
+  "sigma30": {
+   "sigma_m": 30,
+   "relocate": {
+    "n_attached": 177.0,
+    "power_local_contrast": 1.0,
+    "power_mixture_lrt": 1.0
+   },
+   "add": {
+    "n_attached": 170.0,
+    "power_local_contrast": 1.0,
+    "power_mixture_lrt": 1.0
+   },
+   "null95_local": 1.166332796484243,
+   "null95_lrt": 5.289422486930743,
+   "nearest_turbine_correct_frac": 1.0
+  },
+  "sigma100": {
+   "sigma_m": 100,
+   "relocate": {
+    "n_attached": 177.0,
+    "power_local_contrast": 1.0,
+    "power_mixture_lrt": 1.0
+   },
+   "add": {
+    "n_attached": 170.0,
+    "power_local_contrast": 1.0,
+    "power_mixture_lrt": 1.0
+   },
+   "null95_local": 1.16436988962735,
+   "null95_lrt": 5.030220697634832,
+   "nearest_turbine_correct_frac": 0.9689633333333333
+  },
+  "sigma250": {
+   "sigma_m": 250,
+   "relocate": {
+    "n_attached": 177.0,
+    "power_local_contrast": 0.57,
+    "power_mixture_lrt": 0.2
+   },
+   "add": {
+    "n_attached": 170.0,
+    "power_local_contrast": 1.0,
+    "power_mixture_lrt": 1.0
+   },
+   "null95_local": 1.1542212273336099,
+   "null95_lrt": 4.970900059314224,
+   "nearest_turbine_correct_frac": 0.67741
+  },
+  "sigma500": {
+   "sigma_m": 500,
+   "relocate": {
+    "n_attached": 177.0,
+    "power_local_contrast": 0.26,
+    "power_mixture_lrt": 0.06
+   },
+   "add": {
+    "n_attached": 170.0,
+    "power_local_contrast": 0.83,
+    "power_mixture_lrt": 1.0
+   },
+   "null95_local": 1.1382892192721292,
+   "null95_lrt": 4.78337686789655,
+   "nearest_turbine_correct_frac": 0.35628
+  },
+  "sigma1000": {
+   "sigma_m": 1000,
+   "relocate": {
+    "n_attached": 177.0,
+    "power_local_contrast": 0.21,
+    "power_mixture_lrt": 0.06
+   },
+   "add": {
+    "n_attached": 170.0,
+    "power_local_contrast": 0.4,
+    "power_mixture_lrt": 1.0
+   },
+   "null95_local": 1.1157698132468297,
+   "null95_lrt": 4.139626882783885,
+   "nearest_turbine_correct_frac": 0.16636
+  },
+  "sigma1445": {
+   "sigma_m": 1445,
+   "relocate": {
+    "n_attached": 177.0,
+    "power_local_contrast": 0.08,
+    "power_mixture_lrt": 0.09
+   },
+   "add": {
+    "n_attached": 170.0,
+    "power_local_contrast": 0.2,
+    "power_mixture_lrt": 0.92
+   },
+   "null95_local": 1.1420624429571458,
+   "null95_lrt": 3.793117937023271,
+   "nearest_turbine_correct_frac": 0.11189666666666667
+  }
+ },
+ "rush_springs_degraded": {
+  "sigma0": {
+   "added_sigma_m": 0,
+   "full_local_ratio": 2.11501547942516,
+   "full_w": 0.04882110388408642,
+   "full_null95_local": 1.1034874918393835,
+   "subsample_n": 13338,
+   "subsample_detect_frac": 1.0
+  },
+  "sigma100": {
+   "added_sigma_m": 100,
+   "full_local_ratio": 2.0751948303172103,
+   "full_w": 0.032368798737612205,
+   "full_null95_local": 1.076921189564516,
+   "subsample_n": 13338,
+   "subsample_detect_frac": 1.0
+  },
+  "sigma250": {
+   "added_sigma_m": 250,
+   "full_local_ratio": 1.4113760475425032,
+   "full_w": 0.02146078331624046,
+   "full_null95_local": 1.0669644357392136,
+   "subsample_n": 13338,
+   "subsample_detect_frac": 0.9333333333333333
+  },
+  "sigma500": {
+   "added_sigma_m": 500,
+   "full_local_ratio": 1.1046863369599513,
+   "full_w": 0.009433732216299784,
+   "full_null95_local": 1.0539282506894447,
+   "subsample_n": 13338,
+   "subsample_detect_frac": 0.3333333333333333
+  },
+  "sigma1000": {
+   "added_sigma_m": 1000,
+   "full_local_ratio": 1.0446686780209296,
+   "full_w": 0.0023974349678010784,
+   "full_null95_local": 1.0539773293666814,
+   "subsample_n": 13338,
+   "subsample_detect_frac": 0.11666666666666667
+  },
+  "sigma1445": {
+   "added_sigma_m": 1445,
+   "full_local_ratio": 1.0057814411445496,
+   "full_w": 0.005453921224291182,
+   "full_null95_local": 1.0620539049391529,
+   "subsample_n": 13338,
+   "subsample_detect_frac": 0.03333333333333333
+  }
+ },
+ "collgar_attribution_vs_sigma": {
+  "10": 1.0,
+  "20": 1.0,
+  "30": 1.0,
+  "50": 0.9996433333333333,
+  "100": 0.9689633333333333,
+  "200": 0.7615733333333333,
+  "300": 0.57045,
+  "500": 0.35628,
+  "700": 0.25038333333333335,
+  "1000": 0.16636,
+  "1500": 0.10318333333333334,
+  "2000": 0.07457,
+  "3000": 0.04757
+ },
+ "rush_springs_attribution_vs_sigma": {
+  "10": 1.0,
+  "20": 1.0,
+  "30": 1.0,
+  "50": 0.9998733333333333,
+  "100": 0.97329,
+  "200": 0.8089133333333334,
+  "300": 0.6566866666666666,
+  "500": 0.45543,
+  "700": 0.33736333333333335,
+  "1000": 0.23461,
+  "1500": 0.15059666666666666,
+  "2000": 0.10712,
+  "3000": 0.06711666666666667
+ }
+}
