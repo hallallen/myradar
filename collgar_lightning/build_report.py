@@ -42,6 +42,12 @@ v = {
     "rc": f"{tc['transfer']['collgar_capture_radius_m']:.0f}",
     "natt": f"{tc['transfer']['collgar_expected_attached_negCG_strokes']:.0f}",
     "natt_pct": pc(tc["transfer"]["collgar_expected_attached_frac_of_domain"]),
+    "r50x": f"{R['excess_within']['50']['ratio']:.0f}", "c50x": f"{C['excess_within']['50']['ratio']:.2f}",
+    "c_nt": f"{C['n_turbines']}",
+    "p250": pc(tc["collgar_power"]["sigma250"]["relocate"]["power_local_contrast"]),
+    "p500": pc(tc["collgar_power"]["sigma500"]["relocate"]["power_local_contrast"]),
+    "p1445": pc(tc["collgar_power"]["sigma1445"]["relocate"]["power_local_contrast"]),
+    **{f"d{k}": pc(tc["rush_springs_degraded"][f"sigma{k}"]["subsample_detect_frac"]) for k in (250, 500, 1000, 1445)},
     "att100": pc(att["100"]), "att300": pc(att["300"]), "att500": pc(att["500"]), "att1445": pc(tc["collgar_power"]["sigma1445"]["nearest_turbine_correct_frac"]),
 }
 for k in ["A1_current_detection", "A2_independent_separation", "B1_density_ratio", "B2_power_attribution", "B3_maps"]:

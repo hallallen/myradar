@@ -42,6 +42,11 @@ def load(db):
     c = sqlite3.connect(f"{DATA}/{db}")
     f = pd.read_sql("select * from farms", c).iloc[0]
     t = pd.read_sql("select turbine_id,name,lat,lon,tip_height_m,ground_elev_m from turbines", c)
+    if db == "Collgar.db":
+        # WGLT's table holds 127 positions; keep the active turbines named in the Collgar
+        # exposure table / Lightning Tracker (collgar_active_turbines.csv).
+        act = pd.read_csv(os.path.join(os.path.dirname(os.path.abspath(__file__)), "collgar_active_turbines.csv"))
+        t = t[t.turbine_id.isin(act.turbine_id)].reset_index(drop=True)
     s = pd.read_sql("select ns_timestamp,lat,lon,peak_current_ka,is_first,ell_semi_maj_m,ell_semi_min_m,"
                     "num_sensors,chi_square,reprocessed from strokes", c)
     lat0, lon0 = t.lat.mean(), t.lon.mean()

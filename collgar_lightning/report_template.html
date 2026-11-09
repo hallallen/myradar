@@ -71,7 +71,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 <div class="facts">
   <div class="fact"><span class="n">{{same_frac}}</span><span class="l">of AccuWeather records are an exact copy of a Vaisala stroke (same second, &lt;15 m). Every copy is CG.</span></div>
   <div class="fact"><span class="n">+12 h</span><span class="l">AccuWeather's “Date &amp; Time GMT” is 12 hours behind UTC ({{off12}} of 6,525 records match at +12 h; the next best offset matches {{off2}}).</span></div>
-  <div class="fact"><span class="n">19× vs 1.05×</span><span class="l">−CG density within 50 m of a turbine compared with chance: Rush Springs vs Collgar.</span></div>
+  <div class="fact"><span class="n">{{r50x}}× vs {{c50x}}×</span><span class="l">−CG density within 50 m of a turbine compared with chance: Rush Springs vs Collgar.</span></div>
   <div class="fact"><span class="n">≈100 m</span><span class="l">1-σ location error needed at Collgar to detect turbine attachment and attribute strikes reliably. Current estimate: 460–1,445 m.</span></div>
 </div>
 
@@ -127,7 +127,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 <div class="tbl"><table>
 <thead><tr><th></th><th class="num">Collgar (WA)</th><th class="num">Rush Springs (OK)</th></tr></thead>
 <tbody>
-<tr><td>Turbines in analysis · model · tip height</td><td class="num">127 · Vestas V90-2.0 · 125 m</td><td class="num">119 · GE 2.0-116 · 138 m</td></tr>
+<tr><td>Turbines in analysis · model · tip height</td><td class="num">{{c_nt}} · Vestas V90-2.0 · 125 m</td><td class="num">119 · GE 2.0-116 · 138 m</td></tr>
 <tr><td>Median spacing to nearest turbine</td><td class="num">{{c_sp}} m</td><td class="num">{{r_sp}} m</td></tr>
 <tr><td>Record · Vaisala solution</td><td class="num">{{c_yrs}} yr · 100% realtime</td><td class="num">{{r_yrs}} yr · {{r_rep}} reprocessed</td></tr>
 <tr><td>−CG strokes within 5 km of a turbine</td><td class="num">{{c_n}}</td><td class="num">{{r_n}}</td></tr>
@@ -152,9 +152,10 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 <h3>Is the data accurate enough? Three tests</h3>
 <ol>
 <li><strong>Collgar should have shown a signal if the data were good.</strong> Scaling Rush Springs' attachment rate (per unit background stroke density, by tip height²) gives Collgar an equivalent capture radius of about {{rc}} m. That means roughly <strong>{{natt}} −CG strokes</strong> captured by turbines over the record, {{natt_pct}} of strokes within 5 km. The ridge would push this higher.</li>
-<li><strong>Simulated attachment at Collgar.</strong> Strokes in the real Collgar data that fall within the capture radius were moved onto the turbine, every stroke was blurred by a chosen location error, and the result was tested against the shifted-layout null. The signal is found every time at σ ≤ 100 m, 57% of the time at 250 m, 26% at 500 m, and 8% at 1,445 m. The last figure is the false-alarm rate, meaning no detection at all.</li>
-<li><strong>Rush Springs degraded to Collgar quality.</strong> Rush Springs strokes were given extra location error and subsampled to Collgar's stroke count. Its unmistakable signal survives 250 m of added error (93% detected), drops to 33% at 500 m and 12% at 1 km, and vanishes at 1,445 m (3%).</li>
+<li><strong>Simulated attachment at Collgar.</strong> Strokes in the real Collgar data that fall within the capture radius were moved onto the turbine, every stroke was blurred by a chosen location error, and the result was tested against the shifted-layout null. The signal is found every time at σ ≤ 100 m, but only {{p250}} of the time at 250 m, {{p500}} at 500 m, and {{p1445}} at 1,445 m. The last two are close to the false-alarm rate, so the signal is effectively undetectable.</li>
+<li><strong>Rush Springs degraded to Collgar quality.</strong> Rush Springs strokes were given extra location error and subsampled to Collgar's stroke count. Its unmistakable signal survives 250 m of added error ({{d250}} detected), but drops to {{d500}} at 500 m, {{d1000}} at 1 km and {{d1445}} at 1,445 m.</li>
 </ol>
+<p class="small">Detection rates near 5–15% are the false-alarm level of these tests. Each point comes from 60–100 simulations, so values in that range vary by several points between runs and differences among them mean nothing.</p>
 <p>So the null result at Collgar does not mean turbines there are not struck. It means a 0.5–1.4 km error erases the evidence. Pinning an individual strike to a turbine is harder still. With Collgar's layout, the nearest turbine to a reported stroke is the struck one {{att100}} of the time at σ = 100 m, {{att300}} at 300 m, {{att500}} at 500 m, and {{att1445}} at 1,445 m.</p>
 </section>
 
@@ -174,7 +175,7 @@ a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 <ul class="small">
 <li>Rush Springs data are 99.96% reprocessed and Collgar's are 100% realtime. Part of the accuracy gap is the solution type, not just network geometry. That only strengthens the conclusion for Collgar's realtime data.</li>
 <li>The attachment-rate transfer assumes US downward-lightning physics at Collgar. A 2× higher or lower rate shifts the detectable σ only modestly: power at σ ≥ 1 km stays near the false-alarm rate.</li>
-<li>The WGLT turbine table has 127 Collgar positions. The draft report counts 111 operating turbines. Using 111 would slightly reduce the expected signal and change nothing else.</li>
+<li>Collgar has 111 turbines. The WGLT turbine table holds 127 positions; this analysis keeps the {{c_nt}} active turbines named in the draft report's exposure table and Collgar's Lightning Tracker. That excludes WTG 22, 24, 32, 43, 48, 60, 85, 88, 97, 99, 100, 118, 122, 124 and 126. One of the {{c_nt}} is still not an operating turbine, and the sources available here do not say which. One position changes the results negligibly.</li>
 <li>The archive holds Vaisala files only for storm days the pipeline pulled. 96 AccuWeather records on 13 other days could not be checked.</li>
 <li>Rush Springs and Collgar strokes are from each farm's WGLT database (CG strokes ≤ ~25–30 km). The location analysis uses negative CG only.</li>
 </ul>
